@@ -1,0 +1,13 @@
+{
+    "name": "ismael/html2pdf",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ismael López",
+            "email": "lc.ismael@hotmail.com"
+        }
+    ],
+    "require": {
+        "spipu/html2pdf": "5.*"
+    }
+}
