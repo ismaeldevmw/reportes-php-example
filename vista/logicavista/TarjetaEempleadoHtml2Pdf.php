@@ -34,24 +34,36 @@ $data = $bo->obtenerDatosDao($bean);
         <table class="page_main">            
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Checktime</th>
-                <th>Deptname</th>
+                <th>Fecha</th>
+                <th>Dia</th>
+                <th>Entrada / Salida</th>
+                <th>Detalles</th>
               </tr>
             </thead>
             <tbody>
             <?php 
-             if (count($data) != null) {
+             if (count($data) != null) { 
+                $find  = 'AM';
                 for($i=0; $i<count($data); $i++){
-                    echo '
-                    <tr>
-                        <td style="width: 15px;">'.$data[$i]->userid.'</td>
-                        <td style="width: 200px;">'.utf8_encode($data[$i]->name).'</td> 
-                        <td style="width: 100px;">'.$data[$i]->checktime.'</td> 
-                        <td style="width: 192px;">'.utf8_encode($data[$i]->deptname).'</td> 
-                    </tr>
-                    ';
+                    if (strpos($data[$i]->hour, $find)) {
+                       echo '
+                       <tr>
+                           <td style="width: 126px;">'.$data[$i]->date.'</td>
+                           <td style="width: 126px;">'.$data[$i]->day.'</td> 
+                           <td style="width: 126px; background: #00BCD4;">'.$data[$i]->hour.'</td> 
+                           <td style="width: 126px;">'.$data[$i]->checktime.'</td> 
+                       </tr>
+                       ';
+                    } else {
+                        echo '
+                        <tr>
+                            <td style="width: 126px;">'.$data[$i]->date.'</td>
+                            <td style="width: 126px;">'.$data[$i]->day.'</td> 
+                            <td style="width: 126px; background: #8C9EFF;">'.$data[$i]->hour.'</td> 
+                            <td style="width: 126px;">'.$data[$i]->checktime.'</td> 
+                        </tr>
+                        ';
+                    }                   
                 }
             }      
             ?>

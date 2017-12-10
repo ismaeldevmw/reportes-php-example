@@ -4,7 +4,10 @@ class checkinoutBean {
     var $userid;
     var $name;
     var $checktime;
-    var $deptname;       
+    var $deptname;   
+    var $date;
+    var $day;
+    var $hour; 
 
     private $data = [];
     

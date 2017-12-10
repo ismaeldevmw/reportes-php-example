@@ -28,6 +28,9 @@ class CheckinoutDao {
         $lista->name = $row['name'];    
         $lista->checktime = $row['checktime'];  
         $lista->deptname = $row['deptname']; 
+        $lista->date = $row['date']; 
+        $lista->day = $row['day']; 
+        $lista->hour = $row['hour']; 
         array_push($resultset,$lista); 
       }
 
