@@ -12,8 +12,13 @@ class CheckinoutBo {
       $this->view=new CheckinoutView();
   }
 
-  function obtenerDatosBo($data){
-    $result = $this->dao->obtenerDatosDao($data);
+  function obtenerDatosPorIdBo($data){
+    $result = $this->dao->obtenerDatosPorIdDao($data);
+    return $this->view->listaView($result);
+  }
+
+  function obtenerDatosPorRangoFechasBo($data){
+    $result = $this->dao->obtenerDatosPorRangoFechasDao($data);
     return $this->view->listaView($result);
   }
    

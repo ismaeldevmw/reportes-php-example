@@ -44,8 +44,8 @@ class CheckinoutView {
                         <td style="background: #00BCD4;">'.$data[$i]->checktime.'</td> 
                         <td>'.$data[$i]->deptname.'</td> 
                         <td>
-                          <button type="button" class="btn btn-primary btn-sm">Update</button>
-                          <button type="button" class="btn btn-primary btn-sm">Delete</button>
+                          <a href="javascript://" data-toggle="modal" data-target="#myModalActualiza" id="'.$data[$i]->userid.'" onclick="traeDatosUsuarioId(this)" data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                          <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar" id="'.$data[$i]->userid.'" onclick="delUsuario(this)" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td> 
                       </tr>';
                   } else {
@@ -56,8 +56,8 @@ class CheckinoutView {
                         <td style="background: #8C9EFF;">'.$data[$i]->checktime.'</td> 
                         <td>'.$data[$i]->deptname.'</td> 
                         <td>
-                          <button type="button" class="btn btn-primary btn-sm">Update</button>
-                          <button type="button" class="btn btn-primary btn-sm">Delete</button>
+                          <a href="javascript://" data-toggle="modal" data-target="#myModalActualiza" id="'.$data[$i]->userid.'" onclick="traeDatosUsuarioId(this)" data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                          <a href="#" data-toggle="tooltip" data-placement="top" title="Eliminar" id="'.$data[$i]->userid.'" onclick="delUsuario(this)" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td> 
                       </tr>';
                   }               
@@ -66,7 +66,7 @@ class CheckinoutView {
             $cad.='
             </tbody>
           </table> 
-        </div>        
+        </div>       
         ';
         return $cad;
     }

@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Inicio</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 </head>
 <body>
@@ -68,6 +70,7 @@
 	</footer>	
 </div>
 	<script src="assets/js/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script>
@@ -103,6 +106,15 @@
 				});  
 			});   
 		}
+
+		$(function() {
+			$("#fecha1").datepicker({
+				dateFormat: "yy-mm-dd"
+			});
+			$("#fecha2").datepicker({
+				dateFormat: "yy-mm-dd"
+			});
+		});
 	</script>
 </body>
 </html>

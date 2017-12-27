@@ -5,19 +5,33 @@ require_once $_SERVER['DOCUMENT_ROOT'].ruta::getRuta().'/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;
 
-switch ($_REQUEST['action']) {
+if ($_REQUEST['action']) {
 
-	case 'obtener-datos':
-	  	$bean = new checkinoutBean();
-	  	$bo = new CheckinoutBo();   
+	if ($_REQUEST['action'] == 'obtener-datos') {
+		
+		$bean = new checkinoutBean();
+	  	$bo = new CheckinoutBo(); 
 
-	  	$bean->userid=$_POST['userid'];    
-	    $result = $bo->obtenerDatosBo($bean);
+	  	if ($_POST['userid'] != '' && $_POST['fecha1'] == '' && $_POST['fecha2'] == '' ) {
+
+	  		$bean->userid = $_POST['userid'];    
+	    	$result = $bo->obtenerDatosPorIdBo($bean);
+
+	  	} elseif ($_POST['userid'] != '' && $_POST['fecha1'] != '' && $_POST['fecha2'] != '' ) {
+	  		
+  		$bean->userid = $_POST['userid'];
+  		$bean->fecha1 = $_POST['fecha1'];
+  		$bean->fecha2 = $_POST['fecha2'];    
+    	$result = $bo->obtenerDatosPorRangoFechasBo($bean);
+
+	  	}
+
 	    print $result;
-    	break;
+	}
 
-    case 'genera-reporte':    	
-	    if (isset($_REQUEST['userid'])) {
+	if ($_REQUEST['action'] == 'genera-reporte') {
+		
+		if (isset($_REQUEST['userid'])) {
 	    	ob_start();
 	    	require_once $_SERVER['DOCUMENT_ROOT'].ruta::getRuta().'/vista/logicavista/TarjetaEempleadoHtml2Pdf.php';
 	    	$content = ob_get_clean();
@@ -26,6 +40,7 @@ switch ($_REQUEST['action']) {
 	    	$html2pdf->writeHTML($content);
 	    	$html2pdf->output('tarjeta-de-empleado.pdf');
 	    }
-    	break;
+
+	}
 }
   

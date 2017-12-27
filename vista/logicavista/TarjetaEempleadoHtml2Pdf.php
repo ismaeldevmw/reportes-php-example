@@ -8,7 +8,6 @@ $bo = new CheckinoutDao();
 $data = $bo->obtenerDatosDao($bean);
 ?>
 
-
 <link rel="stylesheet" type="text/css" href="../vista/assets/css/TarjetaEempleadoHtml2Pdf.css">
 <page backtop="7mm" backbottom="7mm" backleft="10mm" backright="10mm"> 
     <div>        

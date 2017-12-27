@@ -8,6 +8,8 @@ class checkinoutBean {
     var $date;
     var $day;
     var $hour; 
+    var $fecha1;
+    var $fecha2;
 
     private $data = [];
     
