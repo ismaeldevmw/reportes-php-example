@@ -1,11 +1,26 @@
 <?php 
-require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta. '/ruta.php';
-require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta. '/modelo/dao/checkinout/checkinoutDao.php';
+// require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta. '/ruta.php';
+// require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta. '/modelo/dao/checkinout/checkinoutDao.php';
 
-$bean = new checkinoutBean();  
-$bean->userid= $_GET['userid'];    
-$bo = new CheckinoutDao();    
-$data = $bo->obtenerDatosDao($bean);
+if ( isset($_GET['userid']) && !isset($_GET['fecha1']) && !isset($_GET['fecha2'])) {
+  
+    $bean = new checkinoutBean();  
+    $bean->userid = base64_decode($_GET['userid']);  
+
+    $bo = new CheckinoutDao();    
+    $data = $bo->obtenerDatosPorIdDao($bean);
+
+} elseif (isset($_GET['userid']) && isset($_GET['fecha1']) && isset($_GET['fecha2']) ) {
+  
+    $bean = new checkinoutBean();  
+    $bean->userid = base64_decode($_GET['userid']);
+    $bean->fecha1 = base64_decode($_GET['fecha1']);
+    $bean->fecha2 = base64_decode($_GET['fecha2']);
+
+    $bo = new CheckinoutDao();    
+    $data = $bo->obtenerDatosPorRangoFechasDao($bean);
+
+}
 ?>
 
 <link rel="stylesheet" type="text/css" href="../vista/assets/css/TarjetaEempleadoHtml2Pdf.css">

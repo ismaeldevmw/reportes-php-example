@@ -3,20 +3,25 @@ header("Content-Type: text/text; charset=ISO-8859-1");
 
 class CheckinoutView {    
     
-    function listaView($data){
+    function listaView($data, $params){
         $cad = '
         <div class="col-md-12">     
           <div class="page-header">';
-            if (count($data) != null) {
-              $cad.='
-              <a href="../controlador/checkinoutController.php?action=genera-reporte&userid='.$data[0]->userid.'" target="_blank" class="form-control btn btn-success">PDF</a>';
+            if (count($params) != null) {
+                if ( isset($params[0]) && !isset($params[1]) && !isset($params[2]) ) {
+                    $cad.='
+                    <a href="../controlador/checkinoutController.php?action=genera-reporte&userid='.$params[0].'" target="_blank" class="form-control btn btn-success">Generar PDF</a>';
+                } elseif (isset($params[0]) && isset($params[1]) && isset($params[2]) ) {
+                    $cad.='
+                    <a href="../controlador/checkinoutController.php?action=genera-reporte&userid='.$params[0].'&fecha1='.$params[1].'&fecha2='.$params[2].'" target="_blank" class="form-control btn btn-success">Generar PDF</a>';
+                } 
             }
           $cad.=' 
           </div>
           <table class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
               <tr>
-                <th>No.</th>
+                <th>Empleado</th>
                 <th>Nombre</th>
                 <th>Entrada / Salida</th>
                 <th>Departamento</th>

@@ -12,19 +12,27 @@ class CheckinoutBo {
       $this->view=new CheckinoutView();
   }
 
-  function obtenerDatosPorIdBo($data){
+  function obtenerDatosPorIdBo($data) {
+    
     $result = $this->dao->obtenerDatosPorIdDao($data);
-    return $this->view->listaView($result);
+    $params = array ( base64_encode($data->userid) );
+    return $this->view->listaView($result, $params);
+
   }
 
   function obtenerDatosPorRangoFechasBo($data){
+
     $result = $this->dao->obtenerDatosPorRangoFechasDao($data);
-    return $this->view->listaView($result);
+    $params = array ( base64_encode($data->userid), base64_encode($data->fecha1), base64_encode($data->fecha2) );
+    return $this->view->listaView($result, $params);
   }
    
   function eliminarDatoBo($data) {
+
     $resultado = $this->dao->eliminarUsuarioDao($data);
     return $resultado;
+
   }
+
 }
 ?>

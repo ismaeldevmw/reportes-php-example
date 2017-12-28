@@ -1,6 +1,7 @@
 <?php
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'].ruta::getRuta().'/modelo/bo/checkinoutBo.php';
+require_once $_SERVER['DOCUMENT_ROOT'].ruta::getRuta().'/modelo/beans/checkinoutBean.php';
 require_once $_SERVER['DOCUMENT_ROOT'].ruta::getRuta().'/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;
@@ -24,9 +25,12 @@ if ($_REQUEST['action']) {
   		$bean->fecha2 = $_POST['fecha2'];    
     	$result = $bo->obtenerDatosPorRangoFechasBo($bean);
 
+	  	} else {
+	  		$result = '';
 	  	}
 
 	    print $result;
+
 	}
 
 	if ($_REQUEST['action'] == 'genera-reporte') {
